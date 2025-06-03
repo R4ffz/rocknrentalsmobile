@@ -24,11 +24,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnCadastro.setOnClickListener(v -> {
-            // TODO: abrir tela de cadastro
+            Intent intent = new Intent(MainActivity.this, CadastroActivity.class);
+            startActivity(intent);
         });
 
         btnLogin.setOnClickListener(v -> {
-            // TODO: abrir tela de login
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 }
