@@ -1,0 +1,76 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="@color/roxo"
+            android:textSize="24sp"
+            android:fontFamily="@font/bebas_neue"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp" />
+
+        <EditText
+            android:id="@+id/editLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress"
+            android:autofillHints="emailAddress"
+            android:backgroundTint="@color/roxo"
+            android:textColorHint="@color/roxo"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bebas_neue" />
+
+        <EditText
+            android:id="@+id/editLoginSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginTop="12dp"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            android:autofillHints="password"
+            android:backgroundTint="@color/roxo"
+            android:textColorHint="@color/roxo"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bebas_neue" />
+
+        <Button
+            android:id="@+id/btnEntrar"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="ENTRAR"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bebas_neue"
+            android:background="@color/roxo"
+            android:layout_marginTop="24dp" />
+
+        <Button
+            android:id="@+id/btnVoltarHomeLogin"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="VOLTAR PARA HOME"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bebas_neue"
+            android:background="@color/roxo"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="32dp" />
+    </LinearLayout>
+</ScrollView>
