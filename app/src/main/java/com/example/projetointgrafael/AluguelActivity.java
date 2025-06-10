@@ -62,8 +62,9 @@ public class AluguelActivity extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 values.put(DatabaseHelper.COL_ITEM, itemAtual);
                 values.put(DatabaseHelper.COL_ENDERECO, endereco);
-                values.put(DatabaseHelper.COL_PRAZO, "30 dias");
-                values.put(DatabaseHelper.COL_VALOR, calcularValor(itemAtual));
+                values.put(DatabaseHelper.COL_PRAZO_ALUGUEL, "30 dias");
+                values.put(DatabaseHelper.COL_VALOR_ALUGUEL, calcularValor(itemAtual));
+                values.put(DatabaseHelper.COL_DATA_ALUGUEL, System.currentTimeMillis());
                 long resultado = db.insert(DatabaseHelper.TABLE_ALUGUEIS, null, values);
 
                 if (resultado != -1) {
@@ -78,8 +79,7 @@ public class AluguelActivity extends AppCompatActivity {
         });
 
         btnMeusAlugueis.setOnClickListener(v -> {
-            Intent intent = new Intent(AluguelActivity.this, MeusAlugueisActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(AluguelActivity.this, MeusAlugueisActivity.class));
         });
     }
 

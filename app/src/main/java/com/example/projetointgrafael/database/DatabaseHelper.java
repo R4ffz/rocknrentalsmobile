@@ -7,8 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "rocknrollrentals.db";
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
 
+    // Tabela Usuário
     public static final String TABLE_USUARIO = "Usuario";
     public static final String COL_ID = "id";
     public static final String COL_NOME = "nome";
@@ -16,6 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_SENHA = "senha";
     public static final String COL_NASCIMENTO = "nascimento";
 
+    // Tabela Instrumentos
     public static final String TABLE_INSTRUMENTOS = "instrumentos";
     public static final String COL_ID_INSTRUMENTO = "id";
     public static final String COL_CATEGORIA = "categoria";
@@ -23,9 +25,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_PRAZO = "prazo";
     public static final String COL_VALOR = "valor";
 
+    // Tabela Aluguéis (agora com data do aluguel em milissegundos)
     public static final String TABLE_ALUGUEIS = "alugueis";
     public static final String COL_ITEM = "item";
     public static final String COL_ENDERECO = "endereco";
+    public static final String COL_PRAZO_ALUGUEL = "prazo";       // texto "30 dias"
+    public static final String COL_VALOR_ALUGUEL = "valor";       // texto "R$ xxx"
+    public static final String COL_DATA_ALUGUEL = "dataAluguel";  // INTEGER timestamp
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -33,6 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // Usuário
         String CREATE_TABLE_USUARIO = "CREATE TABLE " + TABLE_USUARIO + " (" +
                 COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_NOME + " TEXT NOT NULL, " +
@@ -41,6 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_NASCIMENTO + " TEXT NOT NULL)";
         db.execSQL(CREATE_TABLE_USUARIO);
 
+        // Instrumentos
         String CREATE_TABLE_INSTRUMENTOS = "CREATE TABLE " + TABLE_INSTRUMENTOS + " (" +
                 COL_ID_INSTRUMENTO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_CATEGORIA + " TEXT NOT NULL, " +
@@ -49,12 +57,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_VALOR + " REAL NOT NULL)";
         db.execSQL(CREATE_TABLE_INSTRUMENTOS);
 
+        // Aluguéis
         String CREATE_TABLE_ALUGUEIS = "CREATE TABLE " + TABLE_ALUGUEIS + " (" +
                 COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_ITEM + " TEXT NOT NULL, " +
                 COL_ENDERECO + " TEXT NOT NULL, " +
-                COL_PRAZO + " TEXT NOT NULL, " +
-                COL_VALOR + " TEXT NOT NULL)";
+                COL_PRAZO_ALUGUEL + " TEXT NOT NULL, " +
+                COL_VALOR_ALUGUEL + " TEXT NOT NULL, " +
+                COL_DATA_ALUGUEL + " INTEGER NOT NULL)";
         db.execSQL(CREATE_TABLE_ALUGUEIS);
 
         inserirInstrumentosPadrao(db);
@@ -74,16 +84,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Guitarra', 'Gibson Les Paul', 30, 300)," +
                 "('Guitarra', 'Ibanez RG', 30, 300)," +
                 "('Guitarra', 'Jackson', 30, 300)," +
-
                 "('Amplificador', 'Fender', 30, 200)," +
                 "('Amplificador', 'Marshall', 30, 200)," +
                 "('Amplificador', 'Peavey', 30, 200)," +
                 "('Amplificador', 'Orange', 30, 200)," +
-
                 "('Pedal', 'Boss DS-1', 30, 200)," +
                 "('Pedal', 'Fuzz', 30, 200)," +
                 "('Pedal', 'Tube Screamer', 30, 200)," +
-
                 "('Pedaleira', 'Zoom G1X Four', 30, 250)," +
                 "('Pedaleira', 'Quad Cortex', 30, 250)");
     }

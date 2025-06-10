@@ -10,11 +10,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import com.example.projetointgrafael.database.DatabaseHelper;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class MeusAlugueisActivity extends AppCompatActivity {
 
-    LinearLayout layoutAlugueis;
-    DatabaseHelper dbHelper;
+    private LinearLayout layoutAlugueis;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +31,7 @@ public class MeusAlugueisActivity extends AppCompatActivity {
         carregarAlugueis();
 
         btnVoltarAluguel.setOnClickListener(v -> {
-            Intent intent = new Intent(MeusAlugueisActivity.this, AluguelActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(MeusAlugueisActivity.this, AluguelActivity.class));
             finish();
         });
     }
@@ -42,21 +44,35 @@ public class MeusAlugueisActivity extends AppCompatActivity {
             do {
                 String item = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_ITEM));
                 String endereco = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_ENDERECO));
-                String prazo = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_PRAZO));
-                String valor = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_VALOR));
+                String prazo = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_PRAZO_ALUGUEL));
+                String valor = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_VALOR_ALUGUEL));
+                long dataMillis = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_DATA_ALUGUEL));
 
-                TextView txt = new TextView(this);
-                txt.setText(
+                // formata a data
+                String dataFormatada = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                        .format(new Date(dataMillis));
+
+                // calcula dias restantes
+                long diff = System.currentTimeMillis() - dataMillis;
+                int diasPassados = (int) (diff / (1000L * 60 * 60 * 24));
+                int diasRestantes = Math.max(0, 30 - diasPassados);
+
+                // monta o bloco de texto
+                TextView linha = new TextView(this);
+                String texto =
                         "Item: " + item + "\n" +
+                                "Data: " + dataFormatada + "\n" +
+                                "Dias Restantes: " + diasRestantes + "\n" +
                                 "Endereço: " + endereco + "\n" +
-                                "Prazo: " + prazo + "\n" +
-                                "Valor: " + valor
-                );
-                txt.setTextColor(getResources().getColor(R.color.white));
-                txt.setTextSize(16);
-                txt.setPadding(0, 16, 0, 16);
-                txt.setTypeface(ResourcesCompat.getFont(this, R.font.bebas_neue));
-                layoutAlugueis.addView(txt);
+                                "Valor: " + valor;
+                linha.setText(texto);
+                linha.setTextColor(getResources().getColor(R.color.white));
+                linha.setTextSize(16);
+                linha.setPadding(0, 16, 0, 16);
+                linha.setTypeface(ResourcesCompat.getFont(this, R.font.bebas_neue));
+
+                layoutAlugueis.addView(linha);
+
             } while (cursor.moveToNext());
         } else {
             TextView vazio = new TextView(this);
@@ -67,7 +83,6 @@ public class MeusAlugueisActivity extends AppCompatActivity {
             vazio.setTypeface(ResourcesCompat.getFont(this, R.font.bebas_neue));
             layoutAlugueis.addView(vazio);
         }
-
         cursor.close();
     }
 }
