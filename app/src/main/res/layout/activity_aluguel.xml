@@ -1,16 +1,386 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/black"
-    android:gravity="center"
-    android:padding="24dp">
+    android:background="@color/black">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login efetuado com sucesso!"
-        android:textColor="@color/roxo"
-        android:textSize="20sp"
-        android:fontFamily="@font/bebas_neue" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- INSTRUMENTOS -->
+        <!-- GUITARRAS -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guitarra Fender Stratocaster"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fenderstrato"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarFender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guitarra Gibson Les Paul"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gibsonlespaul"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarGibson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guitarra Ibanez RG"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ibanezrg"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarIbanez"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guitarra Jackson"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jackson"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarJackson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <!-- AMPLIFICADORES -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amplificador Fender"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fenderamp"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarAmpFender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amplificador Marshall"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/marshallamp"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarAmpMarshall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amplificador Peavey"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/peavey"
+            android:adjustViewBounds="true" />
+        <Button
+            android:id="@+id/btnAlugarAmpPeavey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amplificador Orange"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/orange"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarAmpOrange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <!-- PEDAIS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pedal Boss DS-1"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pedalbossds1"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarPedalBoss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pedal Ibanez Tube Screamer"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pedaltubescreamer"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarPedalIbanez"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pedal Fuzz"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pedalfuzz"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarPedalFuzz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <!-- Pedaleiras -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pedaleira QuadCortex"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/quadcortex"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarQuadCortex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pedaleira Zoom G1XFour"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rock_salt"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/zoomg1xfour"
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/btnAlugarZoomG1XFour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGAR"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/rock_salt" />
+
+
+
+
+
+        <!-- FORMULÁRIO ENDEREÇO -->
+        <LinearLayout
+            android:id="@+id/aluguelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:id="@+id/itemSelecionado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/roxo"
+                android:fontFamily="@font/bebas_neue"
+                android:text="Item selecionado:" />
+
+            <EditText
+                android:id="@+id/editEndereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Endereço completo"
+                android:minHeight="48dp"
+                android:textColorHint="@color/roxo"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/roxo"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/btnConfirmarAluguel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CONFIRMAR"
+                android:textColor="@color/white"
+                android:background="@color/roxo"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+        <!-- BOTÃO FINAL -->
+        <Button
+            android:id="@+id/btnMeusAlugueis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MEUS ALUGUEIS"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/bebas_neue"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp" />
+    </LinearLayout>
+</ScrollView>
