@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -27,11 +26,10 @@ public class AluguelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aluguel);
 
-        editEndereco = findViewById(R.id.editEndereco);
-        formEndereco = findViewById(R.id.aluguelForm);
-        itemSelecionado = findViewById(R.id.itemSelecionado);
-
-        Button btnConfirmar = findViewById(R.id.btnConfirmarAluguel);
+        editEndereco      = findViewById(R.id.editEndereco);
+        formEndereco      = findViewById(R.id.aluguelForm);
+        itemSelecionado   = findViewById(R.id.itemSelecionado);
+        Button btnConfirmar   = findViewById(R.id.btnConfirmarAluguel);
         Button btnMeusAlugueis = findViewById(R.id.btnMeusAlugueis);
 
         dbHelper = new DatabaseHelper(this);
@@ -57,30 +55,38 @@ public class AluguelActivity extends AppCompatActivity {
             String endereco = editEndereco.getText().toString().trim();
             if (endereco.isEmpty()) {
                 Toast.makeText(this, "Digite o endereço", Toast.LENGTH_SHORT).show();
-            } else {
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                ContentValues values = new ContentValues();
-                values.put(DatabaseHelper.COL_ITEM, itemAtual);
-                values.put(DatabaseHelper.COL_ENDERECO, endereco);
-                values.put(DatabaseHelper.COL_PRAZO_ALUGUEL, "30 dias");
-                values.put(DatabaseHelper.COL_VALOR_ALUGUEL, calcularValor(itemAtual));
-                values.put(DatabaseHelper.COL_DATA_ALUGUEL, System.currentTimeMillis());
-                long resultado = db.insert(DatabaseHelper.TABLE_ALUGUEIS, null, values);
-
-                if (resultado != -1) {
-                    Toast.makeText(this, "Aluguel salvo com sucesso!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Erro ao salvar aluguel!", Toast.LENGTH_SHORT).show();
-                }
-
-                editEndereco.setText("");
-                formEndereco.setVisibility(View.GONE);
+                return;
             }
+
+            // salva no banco
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(DatabaseHelper.COL_ITEM, itemAtual);
+            values.put(DatabaseHelper.COL_ENDERECO, endereco);
+            values.put(DatabaseHelper.COL_PRAZO_ALUGUEL, "30 dias");
+            values.put(DatabaseHelper.COL_VALOR_ALUGUEL, calcularValor(itemAtual));
+            values.put(DatabaseHelper.COL_DATA_ALUGUEL, System.currentTimeMillis());
+            long resultado = db.insert(DatabaseHelper.TABLE_ALUGUEIS, null, values);
+
+            if (resultado != -1) {
+                Toast.makeText(this, "Aluguel salvo com sucesso!", Toast.LENGTH_SHORT).show();
+                // após salvar, abre a tela de pagamento
+                Intent intent = new Intent(AluguelActivity.this, PagamentoActivity.class);
+                intent.putExtra("item", itemAtual);
+                intent.putExtra("valor", calcularValor(itemAtual));
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Erro ao salvar aluguel!", Toast.LENGTH_SHORT).show();
+            }
+
+            // limpa e oculta o formulário
+            editEndereco.setText("");
+            formEndereco.setVisibility(LinearLayout.GONE);
         });
 
-        btnMeusAlugueis.setOnClickListener(v -> {
-            startActivity(new Intent(AluguelActivity.this, MeusAlugueisActivity.class));
-        });
+        btnMeusAlugueis.setOnClickListener(v ->
+                startActivity(new Intent(AluguelActivity.this, MeusAlugueisActivity.class))
+        );
     }
 
     private void configurarBotao(int botaoId, String itemTexto) {
@@ -88,14 +94,15 @@ public class AluguelActivity extends AppCompatActivity {
         btn.setOnClickListener(v -> {
             itemAtual = itemTexto;
             itemSelecionado.setText(itemAtual);
-            formEndereco.setVisibility(View.VISIBLE);
+            formEndereco.setVisibility(LinearLayout.VISIBLE);
         });
     }
 
     private String calcularValor(String item) {
-        if (item.contains("Guitarra")) return "R$ 300";
-        if (item.contains("Pedaleira")) return "R$ 250";
-        if (item.contains("Pedal") || item.contains("Amplificador")) return "R$ 200";
+        if (item.contains("Guitarra"))        return "R$ 300";
+        if (item.contains("Pedaleira"))       return "R$ 250";
+        if (item.contains("Pedal")
+                || item.contains("Amplificador"))    return "R$ 200";
         return "R$ 0";
     }
 }
