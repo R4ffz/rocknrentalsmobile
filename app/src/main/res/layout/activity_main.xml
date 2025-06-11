@@ -80,6 +80,27 @@
             android:fontFamily="@font/bebas_neue"
             android:background="@color/roxo"
             android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnAlugarInstrumentoMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALUGUE UM INSTRUMENTO"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/bebas_neue"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnMeusAlugueisMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MEUS ALUGUEIS"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/bebas_neue"
+            android:layout_marginTop="12dp" />
+
     </LinearLayout>
 
     <LinearLayout

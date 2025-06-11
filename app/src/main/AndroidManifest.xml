@@ -17,6 +17,8 @@
         <activity android:name=".ExploreActivity" />
         <activity android:name=".AluguelActivity" />
         <activity android:name=".MeusAlugueisActivity" />
+        <activity android:name=".PagamentoActivity" />
+
 
         <activity
             android:name=".MainActivity"

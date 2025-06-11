@@ -1,6 +1,7 @@
 package com.example.projetointgrafael;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -47,6 +48,11 @@ public class LoginActivity extends AppCompatActivity {
             Cursor cursor = db.rawQuery(query, new String[]{email, senhaCriptografada});
 
             if (cursor.moveToFirst()) {
+                SharedPreferences prefs = getSharedPreferences("usuario", MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("isLoggedIn", true);
+                editor.apply();
+
                 Toast.makeText(this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
                 cursor.close();
                 Intent intent = new Intent(LoginActivity.this, AluguelActivity.class);
@@ -69,13 +75,11 @@ public class LoginActivity extends AppCompatActivity {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(senha.getBytes());
             StringBuilder hexString = new StringBuilder();
-
             for (byte b : hash) {
                 String hex = Integer.toHexString(0xff & b);
                 if (hex.length() == 1) hexString.append('0');
                 hexString.append(hex);
             }
-
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
             return senha;

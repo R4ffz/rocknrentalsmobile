@@ -1,0 +1,129 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Pagamento"
+            android:textSize="24sp"
+            android:fontFamily="@font/bebas_neue"
+            android:textColor="@color/roxo"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Escolha do método -->
+        <RadioGroup
+            android:id="@+id/rgMetodo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbPix"
+                android:text="PIX"
+                android:textColor="@color/white"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioButton
+                android:id="@+id/rbCartao"
+                android:text="Cartão de Crédito"
+                android:textColor="@color/white"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/layoutPix"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Chave PIX:"
+                android:textColor="@color/white"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/etPixChave"
+                android:hint="e-mail ou CPF"
+                android:textColorHint="@color/roxo"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/roxo"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutCartao"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etNumeroCartao"
+                android:hint="Número do Cartão"
+                android:inputType="number"
+                android:textColorHint="@color/roxo"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/roxo"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/etValidade"
+                android:hint="MM/AA"
+                android:inputType="text"
+                android:textColorHint="@color/roxo"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/roxo"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/etCvv"
+                android:hint="CVV"
+                android:inputType="numberPassword"
+                android:textColorHint="@color/roxo"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/roxo"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnConfirmarPagamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONFIRMAR PAGAMENTO"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:background="@color/roxo"
+            android:fontFamily="@font/bebas_neue"
+            android:layout_marginTop="24dp"/>
+    </LinearLayout>
+</ScrollView>
